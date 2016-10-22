@@ -2,7 +2,7 @@
 title: "Ryan Tillis - Getting and Cleaning Data - Data Science - Quiz 1 - Coursera"
 author: <a href="http://www.ryantillis.com"> Ryan Tillis </a>
 date: "July 4, 2016"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -178,16 +178,6 @@ The following are ways to calculate the average value of the variable
 ```
 
 broken down by sex. Using the data.table package, which will deliver the fastest user time?
-
-<hr>
-
-<font size="+1">
-<b>
-
-* mean(DT$pwgtp15,by=DT$SEX)
-
-</b>
-</font>
 
 <hr>
 

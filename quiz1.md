@@ -167,13 +167,6 @@ The following are ways to calculate the average value of the variable
 broken down by sex. Using the data.table package, which will deliver the fastest user time?
 
 <hr>
-<font size="+1"> <b>
-
--   mean(DT*p**w**g**t**p*15, *b**y* = *D**T*SEX)
-
-</b> </font>
-
-<hr>
 ``` r
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv", destfile="quiz1data4.csv")
 
@@ -184,7 +177,7 @@ system.time(mean(DT$pwgtp15,by=DT$SEX))
 ```
 
     ##    user  system elapsed 
-    ##       0       0       0
+    ##   0.000   0.000   0.001
 
 ``` r
 system.time(tapply(DT$pwgtp15,DT$SEX,mean))
@@ -212,7 +205,7 @@ system.time(mean(DT[DT$SEX==1,]$pwgtp15)) + system.time(mean(DT[DT$SEX==2,]$pwgt
 ```
 
     ##    user  system elapsed 
-    ##   0.025   0.002   0.027
+    ##   0.025   0.002   0.026
 
 <hr>
 Check out my website at: <http://www.ryantillis.com/>
