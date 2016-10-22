@@ -133,7 +133,7 @@ Original source of the data: <http://www.cpc.ncep.noaa.gov/data/indices/wksst811
 <hr>
 <font size="+1"> <b>
 
--   28893.3
+-   32426.7
 
 </b> </font>
 
