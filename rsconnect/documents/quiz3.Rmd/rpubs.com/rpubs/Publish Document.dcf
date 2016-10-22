@@ -2,7 +2,7 @@ name: Publish Document
 title:
 account: rpubs
 server: rpubs.com
-appId: https://api.rpubs.com/api/v1/document/220773/15da5ad4a9ed4193a39be2e5c914d916
-bundleId: https://api.rpubs.com/api/v1/document/220773/15da5ad4a9ed4193a39be2e5c914d916
-url: http://rpubs.com/publish/claim/220773/36ab7dfe00b64b229235b24a9f1f3cc9
-when: 1477136749.43452
+appId: https://api.rpubs.com/api/v1/document/220774/bf7f3e1c0b90493d86b7289701ca28fe
+bundleId: https://api.rpubs.com/api/v1/document/220774/bf7f3e1c0b90493d86b7289701ca28fe
+url: http://rpubs.com/ryantillis/220774
+when: 1477136999.81783

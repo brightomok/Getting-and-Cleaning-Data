@@ -2,12 +2,8 @@
 title: "Ryan Tillis - Getting and Cleaning Data - Data Science - Quiz 3 - Coursera"
 author: <a href="http://www.ryantillis.com"> Ryan Tillis </a>
 date: "July 6, 2016"
-output: github_document
+output: html_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## Getting and Cleaning Data Quiz 3
 
@@ -152,7 +148,7 @@ tapply(all$Rank, all$`Income Group`, mean)
 <font size="+1">
 <b>
 
-* 
+* 5
 
 </b>
 </font>

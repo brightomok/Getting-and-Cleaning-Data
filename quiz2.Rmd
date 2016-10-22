@@ -2,7 +2,7 @@
 title: "Ryan Tillis - Getting and Cleaning Data - Data Science - Quiz 2 - Coursera"
 author: <a href="http://www.ryantillis.com"> Ryan Tillis </a>
 date: "July 6, 2016"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -32,7 +32,27 @@ This tutorial may be useful (<https://github.com/hadley/httr/blob/master/demo/oa
 <hr>
 
 ```{r Question 1}
+library(httr)
 
+oauth_endpoints("github")
+
+gitapp <- oauth_app("github",
+  key = "e84aefedbce3a0690faf",
+  secret = "bf589b8260cb6a26719b9cc64fa205d5da1abf26")
+
+github_token <- oauth2.0_token(oauth_endpoints("github"), gitapp)
+
+gtoken <- config(token = github_token)
+req <- GET("https://api.github.com/rate_limit", gtoken)
+stop_for_status(req)
+content(req)
+
+library(jsonlite)
+json1 = content(req)
+json2 = jsonlite::fromJSON(toJSON(json1))
+repo <- json2[5]
+names(repo)
+repo$created_at
 ```
 
 <hr>
@@ -59,8 +79,13 @@ Which of the following commands will select only the data for the probability we
 
 <hr>
 
-```{r Question 3}
+```{r Question 3, eval = FALSE}
+library(sqldf)
+download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv", destfile = "quiz2data.csv")
 
+acs <- read.csv("quiz2data.csv")
+
+sqldf("select pwgtp1 from acs where AGEP < 50")
 ```
 
 <hr>
@@ -77,8 +102,8 @@ Which of the following commands will select only the data for the probability we
 </font>
 
 <hr>
-```{r Question 34}
-
+```{r Question 34, eval = FALSE}
+sqldf("select distinct AGEP from acs")
 ```
 
 <hr>
@@ -102,7 +127,11 @@ http://biostat.jhsph.edu/~jleek/contact.html
 <hr>
 
 ```{r Question}
-
+require(httr);require(XML)
+URL <- url("http://biostat.jhsph.edu/~jleek/contact.html")
+lines <- readLines(URL)
+close(URL)
+c(nchar(lines[10]), nchar(lines[20]), nchar(lines[30]), nchar(lines[100]))
 ```
 
 <hr>
@@ -128,7 +157,10 @@ Original source of the data: <http://www.cpc.ncep.noaa.gov/data/indices/wksst811
 <hr>
 
 ```{r Question 5}
-
+url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fwksst8110.for"
+widths <- c(1, 9, 5, 4, 1, 3, 5, 4, 1, 3, 5, 4, 1, 3, 5, 4, 1, 3)
+fixed <- read.fwf(url, widths, header = FALSE, skip = 4)
+sum(fixed$V8)
 ```
 
 <hr>

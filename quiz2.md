@@ -27,7 +27,13 @@ This tutorial may be useful (<https://github.com/hadley/httr/blob/master/demo/oa
 library(httr)
 
 oauth_endpoints("github")
+```
 
+    ## <oauth_endpoint>
+    ##  authorize: https://github.com/login/oauth/authorize
+    ##  access:    https://github.com/login/oauth/access_token
+
+``` r
 gitapp <- oauth_app("github",
   key = "e84aefedbce3a0690faf",
   secret = "bf589b8260cb6a26719b9cc64fa205d5da1abf26")
@@ -38,14 +44,68 @@ gtoken <- config(token = github_token)
 req <- GET("https://api.github.com/rate_limit", gtoken)
 stop_for_status(req)
 content(req)
+```
 
+    ## $resources
+    ## $resources$core
+    ## $resources$core$limit
+    ## [1] 5000
+    ## 
+    ## $resources$core$remaining
+    ## [1] 5000
+    ## 
+    ## $resources$core$reset
+    ## [1] 1477141341
+    ## 
+    ## 
+    ## $resources$search
+    ## $resources$search$limit
+    ## [1] 30
+    ## 
+    ## $resources$search$remaining
+    ## [1] 30
+    ## 
+    ## $resources$search$reset
+    ## [1] 1477137801
+    ## 
+    ## 
+    ## $resources$graphql
+    ## $resources$graphql$limit
+    ## [1] 200
+    ## 
+    ## $resources$graphql$remaining
+    ## [1] 200
+    ## 
+    ## $resources$graphql$reset
+    ## [1] 1477141341
+    ## 
+    ## 
+    ## 
+    ## $rate
+    ## $rate$limit
+    ## [1] 5000
+    ## 
+    ## $rate$remaining
+    ## [1] 5000
+    ## 
+    ## $rate$reset
+    ## [1] 1477141341
+
+``` r
 library(jsonlite)
 json1 = content(req)
 json2 = jsonlite::fromJSON(toJSON(json1))
-repo <- json2[5,]
+repo <- json2[5]
 names(repo)
+```
+
+    ## [1] NA
+
+``` r
 repo$created_at
 ```
+
+    ## NULL
 
 <hr>
 <font size="+2">2. </font> The sqldf package allows for execution of SQL commands on R data frames. We will use the sqldf package to practice the queries we might send with the dbSendQuery command in RMySQL.
@@ -108,8 +168,6 @@ sqldf("select distinct AGEP from acs")
 require(httr);require(XML)
 ```
 
-    ## Loading required package: httr
-
     ## Loading required package: XML
 
 ``` r
@@ -144,6 +202,8 @@ widths <- c(1, 9, 5, 4, 1, 3, 5, 4, 1, 3, 5, 4, 1, 3, 5, 4, 1, 3)
 fixed <- read.fwf(url, widths, header = FALSE, skip = 4)
 sum(fixed$V8)
 ```
+
+    ## [1] 32426.7
 
 <hr>
 See more at: <http://www.ryantillis.com/>
